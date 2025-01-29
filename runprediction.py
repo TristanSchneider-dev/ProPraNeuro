@@ -4,11 +4,11 @@ import pickle
 import json
 import sys
 
-#python testModel.py 2023-05-01 2023-05-31 /home/pete-linux/Downloads/1_train_and_test.csv mm
+#python runprediction.py.py 2023-05-01 2023-05-31 /home/pete-linux/Downloads/1_train_and_test.csv mm
 
 start_date = sys.argv[1]  # Startdatum
 end_date = sys.argv[2]    # Enddatum
-csv_path = sys.argv[3]    # Pfad zur CSV-Datei
+csv_path = sys.argv[3]    # Pfad zur CSV
 unit = sys.argv[4]        # Einheit der Werte
 
 config = {
@@ -23,7 +23,14 @@ config = {
     "unit": unit  # Einheit der Werte
 }
 
-model_save_path = os.path.splitext(config["csv_path"])[0] + ".pkl"
+# Verzeichnis des Skripts (Python-Ordner)
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Name der CSV-Datei ohne Erweiterung
+csv_name = os.path.splitext(os.path.basename(csv_path))[0]
+
+# Pfad zum Modell im Python-Unterverzeichnis
+model_save_path = os.path.join(script_dir, f"{csv_name}.pkl")
 
 def create_features(df, label=None):
     """

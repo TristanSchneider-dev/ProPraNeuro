@@ -9,7 +9,7 @@ plt.style.use('fivethirtyeight')
 
 # Globale Konfiguration
 config = {
-    "csv_path": "/home/pete-linux/Downloads/1_train_and_test.csv",
+    "csv_path": "/home/pete-linux/Downloads/3_dataset.csv",
     "csv_columns": ["index", "date", "value", "unit"],
     "csv_sep": ";",
     "drop_columns": ["index", "unit"],
@@ -17,7 +17,7 @@ config = {
     "test_size": 0.2,  # Anteil der Daten für den Testdatensatz (20%)
     "random_state": 42,  # Zufallswert für die Reproduzierbarkeit des Daten-Splits
     "model_params": {  # Parameter für das XGBoost-Modell
-        "n_estimators": 200,
+        "n_estimators": 100,
         "tree_method": "hist",
         "device": "cpu"
     }
